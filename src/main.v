@@ -1,11 +1,12 @@
 module main
 
 import winreg
+// import windows
 
 fn main() {
-	hkey := winreg.open_key(.hkey_local_machine, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion", .key_all_acess)!
+	hkey := winreg.open_key(.hkey_local_machine, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion", .key_read)!
 
-	hkey.reg_query_value("ProgramFilesDir")
-	println('Hello World!')
+	prog := hkey.reg_query_value("ProgramFilesDir")
+	println(prog)
 }
 

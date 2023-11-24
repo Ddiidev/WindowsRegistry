@@ -12545,8 +12545,8 @@ _result_src__winreg__HandleKey src__winreg__open_key(src__winreg__HKEYS hkey, st
 void src__winreg__HandleKey_reg_query_value(src__winreg__HandleKey h, string reg) {
 	u32 dword_value_len = ((u32)(0U));
 	int result = RegQueryValueEx(h.hkey_ptr, string_to_wide(reg), ((void*)0), ((void*)0), ((void*)0), &dword_value_len);
-	 _v_dump_expr_u32(_SLIT("C:\\\\Users\\\\AndreLuiz\\\\Documents\\\\SourceApps\\\\Vlang\\\\Testes\\\\Wrapper\\\\src\\\\winreg\\\\functions_interop.v"), 15, _SLIT("dword_value_len"), dword_value_len);
-	 _v_dump_expr_int(_SLIT("C:\\\\Users\\\\AndreLuiz\\\\Documents\\\\SourceApps\\\\Vlang\\\\Testes\\\\Wrapper\\\\src\\\\winreg\\\\functions_interop.v"), 16, _SLIT("result"), result);
+	 _v_dump_expr_u32(_SLIT("C:\\\\Users\\\\AndreLuiz\\\\Documents\\\\SourceApps\\\\Vlang\\\\WindowsRegistry\\\\src\\\\winreg\\\\functions_interop.v"), 15, _SLIT("dword_value_len"), dword_value_len);
+	 _v_dump_expr_int(_SLIT("C:\\\\Users\\\\AndreLuiz\\\\Documents\\\\SourceApps\\\\Vlang\\\\WindowsRegistry\\\\src\\\\winreg\\\\functions_interop.v"), 16, _SLIT("result"), result);
 }
 
 _result_src__winreg__HandleKey src__winreg__HandleKey__static__new(src__winreg__HKEYS key, voidptr hkey_ptr) {

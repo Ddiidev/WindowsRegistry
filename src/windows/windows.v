@@ -1,4 +1,4 @@
-module window
+// module windows
 
 // import os
 // #include "windows.h"
@@ -24,31 +24,4 @@ module window
 // 	unsafe {
 // 		dump( string_from_wide(value) )
 // 	}
-// }
-
-// pub fn reg_open_key_ex() ! {
-
-// 	mut hkey := voidptr(0)
-// 	dword_value_len := u32(1024)
-// 	mut value := [1024]char{}
-
-// 	mut result := C.RegOpenKeyEx(
-// 		hkey_local_machine,
-// 		"SOFTWARE\\Microsoft\\Windows\\CurrentVersion".to_wide(),
-// 		0,
-// 		key_read,
-// 		&hkey
-// 	)
-
-// 	result = C.RegQueryValueEx(
-// 		hkey,
-// 		"ProgramFilesDir".to_wide(),
-// 		0,
-// 		0,
-// 		&value,
-// 		&dword_value_len
-// 	)
-
-// 	dump(result)
-// 	dump(to_string(value[..]))
 // }
