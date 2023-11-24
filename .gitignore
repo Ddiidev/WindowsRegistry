@@ -6,6 +6,8 @@ wrapper
 *.so
 *.dylib
 *.dll
+*.lik
+*.pdb
 
 # Ignore binary output folders
 bin/
@@ -15,10 +17,3 @@ bin/
 .idea/
 .vscode/
 *.iml
-
-# ENV
-.env
-
-# vweb and database
-*.db
-*.js
