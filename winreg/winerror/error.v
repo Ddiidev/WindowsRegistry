@@ -1,23 +1,21 @@
 module winerror
 
-pub const (
-	error_success              = 0
-	error_file_not_found       = 2
-	error_access_denied        = 5
-	error_baddb                = 1009
-	error_badkey               = 1010
-	error_cantopen             = 1011
-	error_cantread             = 1012
-	error_cantwrite            = 1013
-	error_no_more_items        = 259
-	error_not_enough_memory    = 8
-	error_outofmemory          = 14
-	error_invalid_parameter    = 87
-	error_shutdown_in_progress = 1115
-	error_timeout              = 1460
-	error_busy                 = 142
-	error_invalid_handle       = 6
-)
+pub const error_success = 0
+pub const error_file_not_found = 2
+pub const error_access_denied = 5
+pub const error_baddb = 1009
+pub const error_badkey = 1010
+pub const error_cantopen = 1011
+pub const error_cantread = 1012
+pub const error_cantwrite = 1013
+pub const error_no_more_items = 259
+pub const error_not_enough_memory = 8
+pub const error_outofmemory = 14
+pub const error_invalid_parameter = 87
+pub const error_shutdown_in_progress = 1115
+pub const error_timeout = 1460
+pub const error_busy = 142
+pub const error_invalid_handle = 6
 
 pub struct ErrorRegistry {
 	Error

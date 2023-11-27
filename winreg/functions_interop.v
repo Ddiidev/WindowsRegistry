@@ -84,9 +84,8 @@ fn (h HandleKey) get_type_reg_value(reg string) !u32 {
 }
 
 pub fn (mut h HandleKey) change_mode(mode AccessMode) ! {
-
 	temp_handle := open_key(h.hkey, h.subkey, mode)!
-	
+
 	h.close()!
 
 	h = temp_handle

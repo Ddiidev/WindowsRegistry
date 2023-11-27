@@ -23,7 +23,7 @@ concurrency:
 
 jobs:
   create-doc:
-    runs-on: windows-latest
+    runs-on: ubuntu-22.04
 
     environment:
       name: github-pages
@@ -55,7 +55,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: '/brasilapi/_docs'
+          path: '/windowsreg/_docs'
 
       - name: Deploy to GitHub Pages
         id: deployment

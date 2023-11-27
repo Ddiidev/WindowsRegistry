@@ -57,7 +57,7 @@ jobs:
           v install ldedev.windowsreg
 
       - name: Move windowsreg source code to path start
-        run: mv ~/.vmodules/ldedev/windowsreg ~/windowsreg
+        run: mv %userprofile%\.vmodules\ldedev\windowsreg %userprofile%\desktop\windowsreg
 
       - name: Execute Tests using Pure V Backend
-        run: v -cc tcc -stats test ~/windowsreg
+        run: v -cc tcc -stats test %userprofile%\desktop\windowsreg
