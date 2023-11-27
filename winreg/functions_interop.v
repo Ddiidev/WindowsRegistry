@@ -12,16 +12,27 @@ $if windows {
 
 // fn C.RegGetValue(hKey voidptr, lpSubKey u32, lpValue &u16, dwFlags &u32, lpType &u32, lpData &u8, lpcbData &u32) int
 fn C.RegQueryValueEx(hKey voidptr, lpValueName &u16, lp_reserved &u32, lpType &u32, lpData &u8, lpcbData &u32) int
+fn C.RegDeleteValue(hKey voidptr, lpValueName &u16) int
 fn C.RegOpenKeyEx(hKey voidptr, lpSubKey &u16, ulOptions u32, samDesired u32, phkResult voidptr) int
 fn C.RegCloseKey(hKey voidptr) int
 
-pub fn (h HandleKey) reg_get_value(reg string) !string {
+pub fn (h HandleKey) reg_get_value(reg string) !DwValue {
 	typ := h.get_type_reg_value(reg)!
 
 	return if typ == u32(DwType.reg_dword) {
-		h.reg_query_value[int](reg)!.str()
+		h.reg_query_value[int](reg)!
 	} else {
 		h.reg_query_value[string](reg)!
+	}
+}
+
+pub fn (h HandleKey) reg_delete_value(reg string) ! {
+	result := C.RegDeleteValue(h.hkey_ptr, reg.to_wide())
+
+	if result != winerror.error_success {
+		return winerror.ErrorRegistry{
+			code_error_c: result
+		}
 	}
 }
 
@@ -31,11 +42,7 @@ pub fn (h HandleKey) reg_query_value[T](reg string) !T {
 	value := unsafe { &u16(malloc(int(size))) }
 	mut result := 0
 
-	// $if T is string {
-	// 	result = C.RegQueryValueEx(h.hkey_ptr, reg.to_wide(), 0, &typ, value, &size)
-	// } $else {
-		result = C.RegQueryValueEx(h.hkey_ptr, reg.to_wide(), 0, &typ, value, &size)
-	// }
+	result = C.RegQueryValueEx(h.hkey_ptr, reg.to_wide(), 0, &typ, value, &size)
 
 	if result != winerror.error_success {
 		return winerror.ErrorRegistry{
@@ -93,8 +100,6 @@ pub fn (mut h HandleKey) close() ! {
 		}
 	}
 }
-
-pub type DwValue = f32 | int | string
 
 pub fn (h HandleKey) reg_set_value(reg string, dw_value DwValue) ! {
 	result := if dw_value is int {
