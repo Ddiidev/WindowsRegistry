@@ -7,7 +7,7 @@ Windows registry wrappers for Vlang
 
 ## Documentation
 
-[Documentation](https://WIP)
+[Documentation](https://ldedev.github.io/WindowsRegistry)
 
 
 ## How to use
