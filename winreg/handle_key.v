@@ -1,6 +1,6 @@
 module winreg
 
-[noinit]
+@[noinit]
 pub struct HandleKey {
 	hkey HKEYS
 	subkey string

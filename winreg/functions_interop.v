@@ -84,14 +84,15 @@ fn (h HandleKey) get_type_reg_value(reg string) !u32 {
 }
 
 pub fn (mut h HandleKey) change_mode(mode AccessMode) ! {
-	temp_handle := open_key(h.hkey, h.subkey, h.mode)!
 
+	temp_handle := open_key(h.hkey, h.subkey, mode)!
+	
 	h.close()!
 
 	h = temp_handle
 }
 
-pub fn (mut h HandleKey) close() ! {
+pub fn (h HandleKey) close() ! {
 	result := C.RegCloseKey(h.hkey_ptr)
 
 	if result != winerror.error_success {
