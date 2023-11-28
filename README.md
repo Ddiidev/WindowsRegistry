@@ -14,9 +14,9 @@ Windows registry wrappers for Vlang
 
 - [X] Update and delete **value**
 - [X] Read value of type only **REG_SZ** and **REG_DWORD**
-- [ ] Read value of type only **REG_BINARY**, **REG_QDWORD**, **REG_DWORD**, **REG_DWORD_BIG_ENDIAN** and **REG_EXPAND_SZ** 
+- [ ] Read value of type only **REG_BINARY**, **REG_QDWORD**, **REG_DWORD_BIG_ENDIAN** and **REG_EXPAND_SZ** 
 - [X] Write value of type only **REG_SZ** and **REG_DWORD**
-- [ ] Write value of type only **REG_BINARY**, **REG_QDWORD**, **REG_DWORD**, **REG_DWORD_BIG_ENDIAN** and **REG_EXPAND_SZ** 
+- [ ] Write value of type only **REG_BINARY**, **REG_QDWORD**, **REG_DWORD_BIG_ENDIAN** and **REG_EXPAND_SZ** 
 - [ ] create new keys
 - [ ] Delete keys
 
