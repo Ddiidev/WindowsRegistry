@@ -15,14 +15,13 @@ fn C.RegDeleteValue(hKey voidptr, lpValueName &u16) int
 fn C.RegOpenKeyEx(hKey voidptr, lpSubKey &u16, ulOptions u32, samDesired u32, phkResult voidptr) int
 fn C.RegCloseKey(hKey voidptr) int
 
-
 // open_key Opens a specific Windows registry key.
-// 
+//
 // How to use:
 // ```v
 // handle_key := winreg.open_key(.hkey_local_machine, r'SOFTWARE\Microsoft\Windows\CurrentVersion', .key_read)!
 // ```
-// 
+//
 // If any error occurs due to lack of permission, etc... it will return a winerror.ErrorRegistry
 pub fn open_key(hkey HKEYS, subkey string, mode AccessMode) !HandleKey {
 	mut result_hkey := unsafe { nil }
@@ -39,14 +38,14 @@ pub fn open_key(hkey HKEYS, subkey string, mode AccessMode) !HandleKey {
 }
 
 // close closes a connection to windows registry.
-// 
+//
 // How to use:
 // ```v
 // handle_key := winreg.open_key(.hkey_local_machine, r'SOFTWARE\Microsoft\Windows\CurrentVersion', .key_read)!
 //
 // handle_key.close()!
 // ```
-// 
+//
 // If any error occurs due to lack of permission, etc... it will return a winerror.ErrorRegistry
 pub fn (h HandleKey) close() ! {
 	result := C.RegCloseKey(h.hkey_ptr)
@@ -60,7 +59,7 @@ pub fn (h HandleKey) close() ! {
 
 // reg_get_value takes a value of types REG_SZ and REG_DWORD, and returns it as DwValue.
 // If you don't know the type of the value, this function can help a lot.
-// 
+//
 // How to use:
 // ```v
 // program_files_dir := handle_key.reg_get_value("ProgramFilesDir")!
@@ -71,7 +70,7 @@ pub fn (h HandleKey) close() ! {
 // 	println('program_files_dir is int: "$program_files_dir"')
 // }
 // ```
-// 
+//
 // If any error occurs due to lack of permission, etc... it will return a winerror.ErrorRegistry
 pub fn (h HandleKey) reg_get_value(reg string) !DwValue {
 	typ := h.get_type_reg_value(reg)!
@@ -86,14 +85,14 @@ pub fn (h HandleKey) reg_get_value(reg string) !DwValue {
 // reg_query_value[T] takes a value of types REG_SZ and REG_DWORD, and returns it with the specified generic type.
 // You need to know exactly what type is expected, if the value is a REG_DWORD and T is equal to a string
 // Some invalid data will then be returned.
-// 
+//
 // How to use:
 // ```v
 // program_files_dir := handle_key.reg_query_value[string]("ProgramFilesDir")!
 //
 // println('program_files_dir is my string: "$program_files_dir"')
 // ```
-// 
+//
 // If any error occurs due to lack of permission, etc... it will return a winerror.ErrorRegistry
 pub fn (h HandleKey) reg_query_value[T](reg string) !T {
 	size := h.get_lenth_reg_value(reg)!
@@ -116,16 +115,14 @@ pub fn (h HandleKey) reg_query_value[T](reg string) !T {
 	}
 }
 
-
-
 // reg_delete_value deletes a value from the registry.
 // To delete registry values, the application must have elevated permissions on the OS.
-// 
+//
 // How to use:
 // ```v
 // handle_key.reg_delete_value("ProgramFilesDir")! // Be careful when testing! ⚠️
 // ```
-// 
+//
 // If any error occurs due to lack of permission, etc... it will return a winerror.ErrorRegistry
 pub fn (h HandleKey) reg_delete_value(reg string) ! {
 	result := C.RegDeleteValue(h.hkey_ptr, reg.to_wide())
@@ -140,12 +137,12 @@ pub fn (h HandleKey) reg_delete_value(reg string) ! {
 // change_mode changes the key access mode.
 // Ex: .key_read to .key_write or .key_all_acess
 // It is important to say that the handle_key must be mutable.
-// 
+//
 // How to use:
 // ```v
 // handle_key.change_mode(.key_write)!
 // ```
-// 
+//
 // If any error occurs due to lack of permission, etc... it will return a winerror.ErrorRegistry
 pub fn (mut h HandleKey) change_mode(mode AccessMode) ! {
 	temp_handle := open_key(h.hkey, h.subkey, mode)!
@@ -155,17 +152,16 @@ pub fn (mut h HandleKey) change_mode(mode AccessMode) ! {
 	h = temp_handle
 }
 
-
 // reg_set_value modifies and creates a new value in the registry.
 // Its REG_SZ and REG_DWORD value is given through the value passed in dw_value.
-// 
+//
 // How to use:
 // ```v
 // handle_key.reg_set_value("test", 123)! // REG_DWORD
 // handle_key.reg_set_value("test", 123.3)! // REG_SZ
 // handle_key.reg_set_value("test", "123")! // REG_SZ
 // ```
-// 
+//
 // If any error occurs due to lack of permission, etc... it will return a winerror.ErrorRegistry
 pub fn (h HandleKey) reg_set_value(reg string, dw_value DwValue) ! {
 	result := if dw_value is int {
