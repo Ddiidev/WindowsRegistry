@@ -10,3 +10,20 @@ pub enum DwType as u32 {
 	reg_multi_sz         = 7
 	reg_qword            = 11
 }
+
+@[inline]
+pub fn DwType.has(c u32) bool {
+	x := unsafe { DwType(c) }
+	DwType.from_string(x.str()) or { return false }
+
+	return true
+}
+
+@[inline]
+pub fn DwType.get(c u32) !DwType {
+	if DwType.has(c) {
+		return unsafe { DwType(c) }
+	} else {
+		return error_with_code('DwType(${c}) unknow', 1)
+	}
+}

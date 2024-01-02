@@ -10,11 +10,11 @@ fn test_set_value_string() ! {
 	h_write := winreg.open_key(.hkey_local_machine, tests.subkey_current_version, .key_write)!
 	h_read := winreg.open_key(.hkey_local_machine, tests.subkey_current_version, .key_read)!
 
-	h_write.reg_set_value('test', value_test)!
+	h_write.set_value('test', value_test)!
 
 	h_write.close()!
 
-	assert h_read.reg_query_value[string]('test')! == value_test
+	assert h_read.query_value[string]('test')! == value_test
 
 	h_read.close()!
 }
@@ -25,11 +25,11 @@ fn test_set_value_int() ! {
 	h_write := winreg.open_key(.hkey_local_machine, tests.subkey_current_version, .key_write)!
 	h_read := winreg.open_key(.hkey_local_machine, tests.subkey_current_version, .key_read)!
 
-	h_write.reg_set_value('test', value_test)!
+	h_write.set_value('test', value_test)!
 
 	h_write.close()!
 
-	assert h_read.reg_query_value[int]('test')! == value_test
+	assert h_read.query_value[int]('test')! == value_test
 
 	h_read.close()!
 }

@@ -46,7 +46,7 @@ jobs:
         run: sudo mv ~/.vmodules/ldedev/windowsreg /windowsreg
 
       - name: Construct doc
-        run: v doc -comments -readme -f html -all -m /windowsreg
+        run: v doc -comments -readme -f html -m /windowsreg
 
       - name: Setup Pages
         uses: actions/configure-pages@v3

@@ -8,7 +8,7 @@ pub struct HandleKey {
 	mode     AccessMode
 }
 
-// HKEYS são as chaves do registro do windows.
+// HKEYS are the keys of the Windows registry.
 pub enum HKEYS as u64 {
 	hkey_local_machine = 0x80000002
 	hkey_current_user  = 0x80000001

@@ -12,7 +12,7 @@ const long_path_enabled = r'LongPathsEnabled'
 fn test_get_value_string() ! {
 	h := winreg.open_key(.hkey_local_machine, tests.subkey_current_version, .key_read)!
 
-	value := h.reg_query_value[string](tests.program_file_dir)!
+	value := h.query_value[string](tests.program_file_dir)!
 
 	assert value == r'C:\Program Files'
 }
@@ -20,7 +20,7 @@ fn test_get_value_string() ! {
 fn test_get_value_int() ! {
 	h := winreg.open_key(.hkey_local_machine, tests.subkey_file_system, .key_read)!
 
-	value := h.reg_query_value[int](tests.long_path_enabled)!
+	value := h.query_value[int](tests.long_path_enabled)!
 
 	assert value == 1
 }
@@ -28,7 +28,7 @@ fn test_get_value_int() ! {
 fn test_get_value_auto() ! {
 	h := winreg.open_key(.hkey_local_machine, tests.subkey_current_version, .key_read)!
 
-	value := h.reg_get_value(tests.program_file_dir)!
+	value := h.get_value(tests.program_file_dir)!
 
 	assert value.str() == r'C:\Program Files'
 }
@@ -37,7 +37,7 @@ fn test_get_value_force_fail() ! {
 	h := winreg.open_key(.hkey_local_machine, r'SOFTWARE\Microsoft\Windows\CurrentVersionForceFail',
 		.key_read) or {
 		if err is ErrorRegistry {
-			assert err.code_error_c == winerror.error_file_not_found
+			assert err.code() == winerror.error_file_not_found
 			return
 		}
 

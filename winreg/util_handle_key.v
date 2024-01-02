@@ -2,9 +2,9 @@ module winreg
 
 import winreg.winerror
 
-// get_lenth_reg_value pega o comprimento exato do valor do registro.
+// get_length_reg_value retrieves the exact length of the registry value.
 //
-// Caso ocorra algum erro de falta de permissão, etc... irá retornar um winerror.ErrorRegistry
+// If any permission error occurs, it will return a winerror.ErrorRegistry.
 fn (h HandleKey) get_lenth_reg_value(reg string) !u32 {
 	size := u32(0)
 	result := C.RegQueryValueEx(h.hkey_ptr, reg.to_wide(), 0, 0, 0, &size)
@@ -18,10 +18,10 @@ fn (h HandleKey) get_lenth_reg_value(reg string) !u32 {
 	return size
 }
 
-// get_type_reg_value pega o tipo exato do valor do registro.
+// get_type_reg_value retrieves the exact type of the registry value.
 // Ex: REG_SZ, REG_DWORD, REG_BINARY, etc...
 //
-// Caso ocorra algum erro de falta de permissão, etc... irá retornar um winerror.ErrorRegistry
+// If any permission error occurs, it will return a winerror.ErrorRegistry
 fn (h HandleKey) get_type_reg_value(reg string) !u32 {
 	dw_type := u32(0)
 	result := C.RegQueryValueEx(h.hkey_ptr, reg.to_wide(), 0, &dw_type, 0, 0)

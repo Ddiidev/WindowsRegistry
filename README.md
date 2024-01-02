@@ -15,10 +15,11 @@ Windows registry wrappers for Vlang
 ## Funcionalidades
 
 - [X] Update and delete **value**
+- [X] List **value** information
 - [X] Read value of type only **REG_SZ** and **REG_DWORD**
-- [ ] Read value of type only **REG_BINARY**, **REG_QDWORD**, **REG_DWORD_BIG_ENDIAN** and **REG_EXPAND_SZ** 
+- [ ] Read value of type **REG_BINARY**, **REG_QDWORD**, **REG_DWORD_BIG_ENDIAN** and **REG_EXPAND_SZ** 
 - [X] Write value of type only **REG_SZ** and **REG_DWORD**
-- [ ] Write value of type only **REG_BINARY**, **REG_QDWORD**, **REG_DWORD_BIG_ENDIAN** and **REG_EXPAND_SZ** 
+- [ ] Write value of type **REG_BINARY**, **REG_QDWORD**, **REG_DWORD_BIG_ENDIAN** and **REG_EXPAND_SZ** 
 - [ ] create new keys
 - [ ] Delete keys
 
@@ -31,7 +32,7 @@ import ldedev.windowsreg.winreg
 
 h := winreg.open_key(.hkey_local_machine, r'SOFTWARE\Microsoft\Windows\CurrentVersion', .key_read)!
 
-value := h.reg_query_value[string]('ProgramFilesDir')!
+value := h.query_value[string]('ProgramFilesDir')!
 
 println(value)
 ```
@@ -43,7 +44,7 @@ import ldedev.windowsreg.winreg
 
 h := winreg.open_key(.hkey_local_machine, r'SOFTWARE\Microsoft\Windows\CurrentVersion', .key_read)!
 
-value := h.reg_get_value('ProgramFilesDir')!
+value := h.get_value('ProgramFilesDir')!
 
 println(value)
 
@@ -60,5 +61,5 @@ Defining and creating new value. (Remembering that you need to be as ADM on Wind
 
 	h := winreg.open_key(.hkey_local_machine, r'SOFTWARE\Microsoft\Windows\CurrentVersion', .key_write)!
 
-	h.reg_set_value('test', value_test)!
+	h.set_value('test', value_test)!
 ```
