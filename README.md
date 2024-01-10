@@ -4,7 +4,7 @@
 Windows registry wrappers for Vlang
 
 
-## Package [vpm.windowsreg](https://vpm.vlang.io/packages/ldedev.windowsreg)
+## Package [vpm.winreg](https://vpm.vlang.io/packages/ldedev.winreg)
 
 
 ## Documentation
