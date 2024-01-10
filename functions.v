@@ -1,6 +1,6 @@
 module winreg
 
-import winreg.winerror
+import winerror
 
 #include <windows.h>
 

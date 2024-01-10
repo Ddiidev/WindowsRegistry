@@ -1,7 +1,7 @@
 module tests
 
 import winreg
-import winreg.winerror { ErrorRegistry }
+import winerror { ErrorRegistry }
 
 const subkey_current_version = r'SOFTWARE\Microsoft\Windows\CurrentVersion'
 const subkey_file_system = r'SYSTEM\CurrentControlSet\Control\FileSystem'

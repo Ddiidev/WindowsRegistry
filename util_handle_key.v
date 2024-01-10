@@ -1,6 +1,6 @@
 module winreg
 
-import winreg.winerror
+import winerror
 
 // get_length_reg_value retrieves the exact length of the registry value.
 //
