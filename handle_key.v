@@ -2,8 +2,8 @@ module winreg
 
 @[noinit]
 pub struct HandleKey {
-	hkey     HKEYS
-	mode     AccessMode
+	hkey HKEYS
+	mode AccessMode
 pub:
 	subkey   string
 	hkey_ptr voidptr

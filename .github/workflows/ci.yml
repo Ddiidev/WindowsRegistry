@@ -30,15 +30,15 @@ jobs:
       - name: V doctor
         run: v doctor
 
-      - name: Install windowsreg
+      - name: Install winreg
         run: |
-          v install ldedev.windowsreg
+          v install ldedev.winreg
 
-      - name: Move windowsreg source code to path start
-        run: mv ~/.vmodules/ldedev/windowsreg ~/windowsreg
+      - name: Move winreg source code to path start
+        run: mv ~/.vmodules/ldedev/winreg ~/winreg
 
       - name: Verify Fmt
-        run: v fmt -verify ~/windowsreg
+        run: v fmt -verify ~/winreg
 
   run-tests:
     runs-on: windows-latest
@@ -52,12 +52,12 @@ jobs:
       - name: V doctor
         run: v doctor
 
-      - name: Install windowsreg
+      - name: Install winreg
         run: |
-          v install ldedev.windowsreg
+          v install ldedev.winreg
 
-      - name: Move windowsreg source code to path start
-        run: mv $env:userprofile\.vmodules\ldedev\windowsreg $env:userprofile\desktop\windowsreg
+      - name: Move winreg source code to path start
+        run: mv $env:userprofile\.vmodules\ldedev\winreg $env:userprofile\desktop\winreg
 
       - name: Execute Tests using Pure V Backend
-        run: v -cc tcc -stats test $env:userprofile\desktop\windowsreg
+        run: v -cc tcc -stats test $env:userprofile\desktop\winreg

@@ -38,15 +38,15 @@ jobs:
       - name: V doctor
         run: v doctor
 
-      - name: Install WindowsReg
+      - name: Install winreg
         run: |
-          v install ldedev.windowsreg
+          v install ldedev.winreg
 
-      - name: Move windowsreg source code to path start
-        run: sudo mv ~/.vmodules/ldedev/windowsreg /windowsreg
+      - name: Move winreg source code to path start
+        run: sudo mv ~/.vmodules/ldedev/winreg /winreg
 
       - name: Construct doc
-        run: v doc -comments -readme -f html -m /windowsreg
+        run: v doc -comments -readme -f html -m /winreg
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
@@ -55,7 +55,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: '/windowsreg/_docs'
+          path: '/winreg/_docs'
 
       - name: Deploy to GitHub Pages
         id: deployment
