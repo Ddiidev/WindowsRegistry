@@ -40,10 +40,10 @@ jobs:
 
       - name: Install winreg
         run: |
-          v install Ddiidev.winreg
+          v install ddiidev.winreg
 
       - name: Move winreg source code to path start
-        run: sudo mv ~/.vmodules/Ddiidev/winreg /winreg
+        run: sudo mv ~/.vmodules/ddiidev/winreg /winreg
 
       - name: Construct doc
         run: v doc -comments -readme -f html -m /winreg

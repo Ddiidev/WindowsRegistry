@@ -32,10 +32,10 @@ jobs:
 
       - name: Install winreg
         run: |
-          v install Ddiidev.winreg
+          v install ddiidev.winreg
 
       - name: Move winreg source code to path start
-        run: mv ~/.vmodules/Ddiidev/winreg ~/winreg
+        run: mv ~/.vmodules/ddiidev/winreg ~/winreg
 
       - name: Verify Fmt
         run: v fmt -verify ~/winreg
@@ -54,10 +54,10 @@ jobs:
 
       - name: Install winreg
         run: |
-          v install Ddiidev.winreg
+          v install ddiidev.winreg
 
       - name: Move winreg source code to path start
-        run: mv $env:userprofile\.vmodules\Ddiidev\winreg $env:userprofile\desktop\winreg
+        run: mv $env:userprofile\.vmodules\ddiidev\winreg $env:userprofile\desktop\winreg
 
       - name: Execute Tests using Pure V Backend
         run: v -cc tcc -stats test $env:userprofile\desktop\winreg
