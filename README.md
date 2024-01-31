@@ -9,7 +9,7 @@ Windows registry wrappers for Vlang
 
 ## Documentation
 
-[Documentation](https://ldedev.github.io/WindowsRegistry)
+[Documentation](https://Ddiidev.github.io/WindowsRegistry)
 
 
 ## Funcionalidades
@@ -28,7 +28,7 @@ Windows registry wrappers for Vlang
 Getting a string value.
 
 ```v
-import ldedev.winreg
+import Ddiidev.winreg
 
 h := winreg.open_key(.hkey_local_machine, r'SOFTWARE\Microsoft\Windows\CurrentVersion', .key_read)!
 
@@ -40,7 +40,7 @@ println(value)
 It is possible to get a value without needing to know the type of the value in the registry.
 
 ```v
-import ldedev.winreg
+import Ddiidev.winreg
 
 h := winreg.open_key(.hkey_local_machine, r'SOFTWARE\Microsoft\Windows\CurrentVersion', .key_read)!
 
